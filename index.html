@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>怪怪屋</title>
+    <!-- Modern Quicksand font for pastel theme -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Roster Area -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>怪怪屋</h1>
+                <p>在这里添加幸运的怪怪吧！</p>
+            </div>
+            
+            <div class="upload-section">
+                <!-- Use a label as a styled upload button -->
+                <label for="doll-upload" class="upload-btn">
+                    <span>+ 添加怪怪</span>
+                </label>
+                <!-- Multi-image upload -->
+                <input type="file" id="doll-upload" accept="image/*" multiple hidden>
+            </div>
+
+            <div id="doll-list" class="doll-list">
+                <!-- Doll items injected here by app.js -->
+            </div>
+        </aside>
+
+        <!-- Main Wheel Area -->
+        <main class="wheel-area">
+            <div class="wheel-wrapper">
+                <div class="pointer"></div>
+                <canvas id="wheel" width="600" height="600"></canvas>
+            </div>
+            <button id="spin-btn" class="spin-btn" disabled>开始转动！</button>
+        </main>
+    </div>
+
+    <!-- Celebration Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>太棒了！今晚的幸运怪怪是：</h2>
+            </div>
+            <img id="winner-img" src="" alt="Winner Doll Picture">
+            <p id="winner-name">怪怪名字</p>
+            <button id="close-modal" class="btn-primary">好耶！</button>
+        </div>
+    </div>
+
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
