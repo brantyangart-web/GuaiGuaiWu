@@ -28,8 +28,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    padding: 2vh 0;
 }
 
 @keyframes gradientBG {
@@ -162,6 +162,25 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    cursor: text;
+}
+
+.doll-item span:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.doll-item span:focus {
+    outline: none;
+    background: white;
+    border: 1px solid var(--btn-primary);
+    overflow: visible;
+    white-space: normal;
+    word-break: break-all;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .delete-btn {
@@ -341,23 +360,44 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 950px), (max-height: 750px) {
+    body {
+        align-items: flex-start; /* Avoids clipping on small screens */
+    }
     .app-container {
         flex-direction: column;
         height: auto;
-        padding: 20px;
+        gap: 15px;
+        margin: 10px auto;
     }
     .sidebar {
         width: 100%;
-        max-height: 300px;
+        min-height: 250px;
+        max-height: 35vh;
+        padding: 15px;
+    }
+    .sidebar-header {
+        margin-bottom: 10px;
+    }
+    .sidebar-header h1 {
+        font-size: 24px;
+    }
+    .wheel-area {
+        padding: 20px 10px;
     }
     .wheel-wrapper {
         width: 100%;
-        max-width: 400px;
-        height: 400px;
+        max-width: 320px;
+        height: 320px; /* Keep it round and fitting screen width/height */
+        margin: 0 auto;
     }
     #wheel {
         width: 100%;
         height: 100%;
+    }
+    .spin-btn {
+        margin-top: 20px;
+        padding: 12px 24px;
+        font-size: 18px;
     }
 }

@@ -170,6 +170,25 @@ function renderRoster() {
         
         const span = document.createElement('span');
         span.textContent = doll.name;
+        span.contentEditable = true;
+        span.title = "点击此文字编辑名字"; // click to edit
+        
+        span.addEventListener('blur', async () => {
+            const newName = span.textContent.trim();
+            if (newName !== '' && newName !== doll.name) {
+                doll.name = newName;
+                await saveDollToDB(doll);
+            } else {
+                span.textContent = doll.name; // reverse if empty
+            }
+        });
+        
+        span.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                span.blur();
+            }
+        });
         
         const delBtn = document.createElement('button');
         delBtn.className = 'delete-btn';
